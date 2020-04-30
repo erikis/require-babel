@@ -1,0 +1,9 @@
+{
+  "name": "require-babel",
+  "description": "An AMD loader plugin for Babel",
+  "categories": [
+    "Loader plugins",
+    "Parsers & Compilers"
+  ],
+  "version": "0.1.0"
+}

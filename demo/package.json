@@ -1,0 +1,37 @@
+{
+  "scripts": {
+    "build": "./node_modules/requirejs/bin/r.js -o build.js",
+    "minify": "node_modules/uglify-es/bin/uglifyjs app.build.js --compress --mangle --comments -d APP_LAUNCH_DELAY=0 --output app.min.js",
+    "test": "./node_modules/mocha/bin/mocha --require @babel/register --require jsdom-global/register ./src/test.js",
+    "webpack": "npx webpack --config webpack.config.js --display-modules"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.9.0",
+    "@babel/runtime-corejs3": "^7.9.2",
+    "babel-loader": "^8.1.0",
+    "core-js": "^3.6.5",
+    "jsdom": "^16.2.2",
+    "jsdom-global": "^3.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@babel/standalone": "^7.9.5",
+    "almond": "^0.3.3",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "requirejs": "^2.3.6",
+    "uglify-es": "^3.3.9"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}
