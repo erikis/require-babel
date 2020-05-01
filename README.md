@@ -47,7 +47,6 @@ Plugin preconfigured for transforming ES modules using [JSX](https://en.wikipedi
         document.head.appendChild(node);
       };
       BABEL_ENV_TARGETS = { "chrome": "81", "firefox": "75", "safari": "13" };
-      APP_LAUNCH_DELAY = 100; // ms to wait before launch for more reliable breakpoints
       require(["esm!./app"]); // transforms and runs app.js
     </script>
   </body>
