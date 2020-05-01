@@ -77,7 +77,7 @@ Try it here: [require-babel demo](https://erikis.github.io/require-babel/) (use 
 
 After installing the production dependencies (`npm install --production`), the demo app can be built using RequireJS and minified: `npm run build && npm run minify`.
 
-After installing the development dependences (`npm install`), the demo app can be tested using `npm test` and built using webpack and minified: `npm run webpack && npm run minify`.
+After installing the development dependencies (`npm install`), the demo app can be tested using `npm test` and built using webpack and minified: `npm run webpack && npm run minify`.
 
 ## License
 
