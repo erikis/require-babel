@@ -1,9 +1,13 @@
 {
   "name": "require-babel",
-  "description": "An AMD loader plugin for Babel",
-  "categories": [
-    "Loader plugins",
-    "Parsers & Compilers"
-  ],
-  "version": "0.1.0"
+  "description": "AMD loader plugins for Babel",
+  "version": "0.1.1",
+  "homepage": "https://github.com/erikis/require-babel",
+  "author": "Erik Isaksson <erikis@kth.se> (https://github.com/erikis)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erikis/require-babel.git"
+  },
+  "license": "MIT",
+  "main": "babel.js"
 }
