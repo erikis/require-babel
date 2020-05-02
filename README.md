@@ -7,7 +7,7 @@
 * Possibility to run code from source served by a simple web server, without a prior build. Reload to use new code.
 * No changes in the code required: just use modern JavaScript code, ES modules, and JSX as usual.
 * Builds for production use work as usual and are completely self-contained, i.e., no other script will be required.
-* These scripts are themselves not included in builds as they are not needed in built code.
+* These scripts are themselves not included in builds as they are not needed for built code.
 * JavaScript was made for the web browser and any browser should be able to run all code.
 
 ## Plugins
@@ -22,7 +22,7 @@ The intention is that babel.js will not normally be used directly, but rather th
 
 ### esm.js
 
-Plugin preconfigured for transforming ES modules and recursively transforming imported modules with URLs ending with .js and .jsx, by prepending "esm!" and "jsx!", respectively. E.g., **./module.js** becomes **esm!./module**.
+Plugin preconfigured for transforming [ES](https://en.wikipedia.org/wiki/ECMAScript) modules and recursively transforming imported modules with URLs ending with .js and .jsx, by prepending "esm!" and "jsx!", respectively. E.g., **./module.js** becomes **esm!./module**.
 
 ### jsx.js
 
