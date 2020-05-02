@@ -84,7 +84,7 @@ Try it here: [require-babel demo](https://erikis.github.io/require-babel/) (use 
 * webpack.config.js — webpack build specification, used by `npm run webpack`
 * babel.config.json — Babel config for transcompilation, used by `npm test`
 
-After installing the production dependencies (`npm install --production`), the demo app can be built using RequireJS and minified: `npm run build && npm run minify`.
+After installing the production dependencies (`npm install --production`), the demo app can be built using RequireJS and minified: `npm run build && npm run minify`. The build is intended to not affect global state on the page.
 
 After installing the development dependencies (`npm install`), the demo app can be tested using `npm test` and built using webpack and minified: `npm run webpack && npm run minify`.
 
