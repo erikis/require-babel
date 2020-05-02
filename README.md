@@ -69,7 +69,7 @@ npm install require-babel
 
 ## Demo
 
-Try it here: [require-babel demo](https://erikis.github.io/require-babel/) (Use Developer Tools to view source code, set breakpoints, etc.)
+**Try it here: [require-babel demo](https://erikis.github.io/require-babel/)** (Use Developer Tools to view source code, set breakpoints, etc.)
 
 * src/\* — .js files for ES modules, .jsx files for ES modules that use JSX syntax
 * src/test/\* — tests for code in the parent directory
