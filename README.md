@@ -1,8 +1,18 @@
 # require-babel
 
-AMD loader plugins for Babel: [run and debug](https://erikis.github.io/require-babel/) JavaScript code directly from source even when using ES modules and JSX
+[Run and debug](https://erikis.github.io/require-babel/) modern JavaScript code directly from source even when using ES modules and JSX
+
+## Why
+
+* Possibility to run code from source served by a simple web server, without a prior build. Reload to use new code.
+* No changes in the code required: just use modern JavaScript code, ES modules, and JSX as usual.
+* Builds for production use work as usual and are completely self-contained, i.e., no other script will be required.
+* These scripts are themselves not included in builds as they are not needed in built code.
+* JavaScript was made for the web browser and any browser should be able to run all code.
 
 ## Plugins
+
+These scripts are implemented as [AMD loader plugins](https://requirejs.org/docs/api.html#plugins) for [Babel](https://babeljs.io/).
 
 ### babel.js
 
