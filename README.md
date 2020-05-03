@@ -112,7 +112,7 @@ npm install require-babel
 * webpack.config.js — webpack build specification, used by `npm run webpack`
 * babel.config.json — Babel config for transcompilation, used by `npm test`
 
-The demo app can be used locally by running, e.g, `npx serve -l 8123`.
+The demo app can be used locally by running, e.g, `npx serve -l 8123` while in the demo directory.
 
 After installing the production dependencies (`npm install --production`), the demo app can be built using RequireJS and minified: `npm run build && npm run minify`. The build is intended to not affect global state on the page.
 
