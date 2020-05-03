@@ -38,8 +38,8 @@
         }
       });
       require.exec = function(text) {
-        // Do no eval (the default) because it breaks breakpoints
-        var node = require.createNode(require.config);
+        // Do no eval (the default)
+        var node = require.createNode({});
         node.text = text;
         document.head.appendChild(node);
       };
