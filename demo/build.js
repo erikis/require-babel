@@ -9,8 +9,8 @@
         "react-dom": "node_modules/react-dom/umd/react-dom.production.min"
     },
     /*config: {
-        "esm": { options: { presets: [ [ "env", { targets: { "chrome": "81" } } ] ] } },
-        "jsx": { options: { presets: [ [ "env", { targets: { "chrome": "81" } } ] ] } }
+        "esm": { env: { targets: { "chrome": "81" } } },
+        "jsx": { env: { targets: { "chrome": "81" } } }
     },*/
     include: [ "./app-main" ],
     insertRequire: [ "./app-main" ],

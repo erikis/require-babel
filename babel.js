@@ -138,12 +138,13 @@ define(['module', 'babel-standalone'], function (module, Babel) {
         }
     });
 
+    var envOptions = { targets: typeof BABEL_ENV_TARGETS !== 'undefined' ? BABEL_ENV_TARGETS : 'defaults' };
+    var envPreset = [ 'env', envOptions ];
+
     return {
         version: '0.1.0',
 
-        defaultPresets: [ [ 'env', {
-            targets: typeof BABEL_ENV_TARGETS !== 'undefined' ? BABEL_ENV_TARGETS : 'defaults'
-        } ] ],
+        defaultPresets: [ envPreset ],
 
         defaultPlugins: [ 'x-transform-import-urls', 'transform-modules-amd' ],
 
@@ -164,6 +165,7 @@ define(['module', 'babel-standalone'], function (module, Babel) {
             var options = pluginConfig.options || {};
             options.presets = options.presets || this.defaultPresets;
             options.plugins = options.plugins || this.defaultPlugins;
+            envPreset[1] = pluginConfig.env || envOptions;
             suffixToPrefix = pluginConfig.extensions || this.defaultExtensions;
 
             // Get the suffix (file extension) from config or assume ".js"
