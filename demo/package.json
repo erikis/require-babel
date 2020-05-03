@@ -28,6 +28,7 @@
     "mocha": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "require-babel": "^1.0.0",
     "requirejs": "^2.3.6",
     "uglify-es": "^3.3.9"
   },

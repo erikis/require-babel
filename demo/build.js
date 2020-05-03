@@ -1,9 +1,9 @@
 ({
     baseUrl: ".",
     paths: {
-        "esm": "../esm",
-        "jsx": "../jsx",
-        "require-babel": "../babel",
+        "esm": "node_modules/require-babel/esm",
+        "jsx": "node_modules/require-babel/jsx",
+        "require-babel": "node_modules/require-babel/babel",
         "babel-standalone": "node_modules/@babel/standalone/babel",
         "react": "node_modules/react/umd/react.production.min",
         "react-dom": "node_modules/react-dom/umd/react-dom.production.min"
