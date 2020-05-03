@@ -15,7 +15,7 @@ define(['module', 'require-babel'], function (module, babel) {
     return {
         version: babel.version,
 
-        write: function(pluginName, name, write) {
+        write: function (pluginName, name, write) {
             return babel.write.call(babel, pluginName, name, write);
         },
 
