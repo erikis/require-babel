@@ -1,16 +1,16 @@
 ({
     baseUrl: ".",
     paths: {
-        "esm": "../esm",
-        "jsx": "../jsx",
-        "require-babel": "../babel",
+        "esm": "node_modules/require-babel/esm",
+        "jsx": "node_modules/require-babel/jsx",
+        "require-babel": "node_modules/require-babel/babel",
         "babel-standalone": "node_modules/@babel/standalone/babel",
         "react": "node_modules/react/umd/react.production.min",
         "react-dom": "node_modules/react-dom/umd/react-dom.production.min"
     },
     /*config: {
-        "esm": { options: { presets: [ [ "env", { targets: { "chrome": "81" } } ] ] } },
-        "jsx": { options: { presets: [ [ "env", { targets: { "chrome": "81" } } ] ] } }
+        "esm": { env: { targets: { "chrome": "81" } } },
+        "jsx": { env: { targets: { "chrome": "81" } } }
     },*/
     include: [ "./app-main" ],
     insertRequire: [ "./app-main" ],
