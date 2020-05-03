@@ -13,7 +13,7 @@ define(['module', 'require-babel'], function (module, babel) {
     pluginConfig.extensions = pluginConfig.extensions || { '.js': 'esm!', '.jsx': 'jsx!' };
     var options = pluginConfig.options = pluginConfig.options || {};
     var presets = babel.defaultPresets.slice();
-    presets.push('react');
+    presets.push([ 'react', pluginConfig.react || {} ]);
     options.presets = options.presets || presets;
 
     return {
