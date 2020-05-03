@@ -1,7 +1,7 @@
 {
   "name": "require-babel",
   "description": "AMD loader plugins for Babel",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/erikis/require-babel",
   "author": "Erik Isaksson <erikis@kth.se> (https://github.com/erikis)",
   "repository": {

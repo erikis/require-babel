@@ -1,5 +1,5 @@
 /**
- * @license require-babel 0.1.0
+ * @license require-babel 1.0.0
  * Copyright 2020 Erik Isaksson
  * Released under MIT license, https://github.com/erikis/require-babel/blob/master/LICENSE
  *
@@ -148,7 +148,7 @@ define(['module', 'babel-standalone'], function (module, Babel) {
     var envPreset = [ 'env', envOptions ];
 
     return {
-        version: '0.1.0',
+        version: '1.0.0',
 
         defaultPresets: [ envPreset ],
 
