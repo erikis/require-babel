@@ -9,7 +9,7 @@
  */
 
 /*global define, window, XMLHttpRequest, importScripts, Packages, java,
-  ActiveXObject, process, require, BABEL_ENV_TARGETS */
+  ActiveXObject, process, require, JSON, BABEL_ENV_TARGETS */
 
 define(['module', 'babel-standalone'], function (module, Babel) {
     'use strict';
@@ -157,8 +157,10 @@ define(['module', 'babel-standalone'], function (module, Babel) {
         defaultExtensions: { '.js': 'babel!' },
 
         defaultTransform: function (text, options) {
-            var compiled = Babel.transform(text, options);
-            return compiled.code;
+            return function () {
+                var compiled = Babel.transform(text, options);
+                return compiled.code;
+            };
         },
 
         write: function (pluginName, name, write) {
@@ -202,14 +204,21 @@ define(['module', 'babel-standalone'], function (module, Babel) {
                     options.sourceFileName = path;
                 }
 
-                text = transform(text, options);
-
-                //Hold on to the transformed text if a build.
-                if (config.isBuild) {
-                    buildMap[name] = text;
+                // Transform, hold on to transformed text if a build, and load
+                var transformed = transform(text, options);
+                if (typeof transformed === 'function') {
+                    text = transformed();
+                    if (config.isBuild) {
+                        buildMap[name] = text;
+                    }
+                    load.fromText(name, text);
+                } else {
+                    if (config.isBuild) {
+                        text = 'define(function() { return ' + JSON.stringify(transformed) + '; );\n';
+                        buildMap[name] = text;
+                    }
+                    load(transformed);
                 }
-
-                load.fromText(name, text);
             });
         }
     };
