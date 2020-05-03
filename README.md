@@ -44,11 +44,11 @@ These scripts are implemented as AMD loader plugins but do not use Babel.
 
 ### json.js
 
-Plugin preconfigured for importing JSON files. Other plugins need to be configured to map the extension **.json** to **json!**. The script can be copied and configured for other use cases, e.g. **jsonld.js** for **.jsonld** files.
+Plugin preconfigured for importing JSON files. Other plugins need to be configured to map the extension **.json** to **json!**. The script can be copied and configured for other use cases, e.g., **jsonld.js** for **.jsonld** files.
 
 ### text.js
 
-Plugin preconfigured for importing text files. Other plugins need to be configured to map the extension **.txt** to **text!**. The script can be copied and configured for other use cases, e.g. **csv.js** for **.csv** files.
+Plugin preconfigured for importing text files. Other plugins need to be configured to map the extension **.txt** to **text!**. The script can be copied and configured for other use cases, e.g., **csv.js** for **.csv** files.
 
 Note that it is best to avoid loading modules or files having the same name, only differing in file extension. Otherwise, there might be mix-ups in the build.
 
