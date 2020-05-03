@@ -172,6 +172,14 @@ define(['module', 'babel-standalone'], function (module, Babel) {
             options.presets = options.presets || this.defaultPresets;
             options.plugins = options.plugins || this.defaultPlugins;
             envPreset[1] = pluginConfig.env || envOptions;
+            if (pluginConfig.hasOwnProperty('presets')) {
+                options.presets = options.presets.concat(pluginConfig.presets);
+                delete pluginConfig.presets; // do not concat again
+            }
+            if (pluginConfig.hasOwnProperty('plugins')) {
+                options.plugins = options.plugins.concat(pluginConfig.plugins);
+                delete pluginConfig.plugins; // do not concat again
+            }
             suffixToPrefix = pluginConfig.extensions || this.defaultExtensions;
 
             // Get the suffix (file extension) from config or assume ".js"
