@@ -13,6 +13,7 @@ define(['module', 'require-babel'], function (module, babel) {
     pluginConfig.extensions = pluginConfig.extensions || { '.ts': 'tsm!', '.tsx': 'tsx!' };
     var options = pluginConfig.options = pluginConfig.options || {};
     var presets = babel.defaultPresets.slice();
+    presets.push([ 'react', pluginConfig.react || {} ]);
     presets.push([ 'typescript', pluginConfig.typescript || { allExtensions: true, isTSX: true } ]);
     options.presets = options.presets || presets;
 
