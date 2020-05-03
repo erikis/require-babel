@@ -156,6 +156,11 @@ define(['module', 'babel-standalone'], function (module, Babel) {
 
         defaultExtensions: { '.js': 'babel!' },
 
+        defaultTransform: function (text, options) {
+            var compiled = Babel.transform(text, options);
+            return compiled.code;
+        },
+
         write: function (pluginName, name, write) {
             if (buildMap.hasOwnProperty(name)) {
                 var text = buildMap[name];
@@ -167,27 +172,29 @@ define(['module', 'babel-standalone'], function (module, Babel) {
             // Get config from (non-standard) 5th argument if this was invoked from another plugin
             pluginConfig = pluginConfig || masterConfig;
 
-            // Get options from config and set default options
-            var options = pluginConfig.options || {};
-            options.presets = options.presets || this.defaultPresets;
-            options.plugins = options.plugins || this.defaultPlugins;
-            envPreset[1] = pluginConfig.env || envOptions;
-            if (pluginConfig.hasOwnProperty('presets')) {
-                options.presets = options.presets.concat(pluginConfig.presets);
-                delete pluginConfig.presets; // do not concat again
-            }
-            if (pluginConfig.hasOwnProperty('plugins')) {
-                options.plugins = options.plugins.concat(pluginConfig.plugins);
-                delete pluginConfig.plugins; // do not concat again
-            }
-            suffixToPrefix = pluginConfig.extensions || this.defaultExtensions;
-
             // Get the suffix (file extension) from config or assume ".js"
             var suffix = pluginConfig.extension || '.js';
 
             // Convert the name + suffix to a URL
             var path = parentRequire.toUrl(name + suffix);
+            var babel = this;
             fetchText(path, function (text) {
+
+                // Get options from config and set default options
+                var options = pluginConfig.options || {};
+                options.presets = options.presets || babel.defaultPresets;
+                options.plugins = options.plugins || babel.defaultPlugins;
+                envPreset[1] = pluginConfig.env || envOptions;
+                if (pluginConfig.hasOwnProperty('presets')) {
+                    options.presets = options.presets.concat(pluginConfig.presets);
+                    delete pluginConfig.presets; // do not concat again
+                }
+                if (pluginConfig.hasOwnProperty('plugins')) {
+                    options.plugins = options.plugins.concat(pluginConfig.plugins);
+                    delete pluginConfig.plugins; // do not concat again
+                }
+                suffixToPrefix = pluginConfig.extensions || babel.defaultExtensions;
+                var transform = pluginConfig.transform || babel.defaultTransform;
 
                 // If not a build, produce an inline source map for use in browser dev tools
                 if (!config.isBuild) {
@@ -195,8 +202,7 @@ define(['module', 'babel-standalone'], function (module, Babel) {
                     options.sourceFileName = path;
                 }
 
-                var compiled = Babel.transform(text, options);
-                text = compiled.code;
+                text = transform(text, options);
 
                 //Hold on to the transformed text if a build.
                 if (config.isBuild) {
