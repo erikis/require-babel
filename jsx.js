@@ -12,9 +12,9 @@ define(['module', 'require-babel'], function (module, babel) {
     pluginConfig.extension = pluginConfig.extension || '.jsx';
     pluginConfig.extensions = pluginConfig.extensions || { '.js': 'esm!', '.jsx': 'jsx!' };
     var options = pluginConfig.options = pluginConfig.options || {};
-    var plugins = babel.defaultPlugins.slice();
-    plugins.unshift('transform-react-jsx');
-    options.plugins = options.plugins || plugins;
+    var presets = babel.defaultPresets.slice();
+    presets.push('react');
+    options.presets = options.presets || presets;
 
     return {
         version: babel.version,
