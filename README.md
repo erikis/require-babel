@@ -36,7 +36,7 @@ Plugin preconfigured for transforming ES modules using [TypeScript](https://en.w
 
 Plugin preconfigured for transforming ES modules using TS/JSX syntax and recursively transforming imported modules with URLs ending with .ts and .tsx, by prepending "tsm!" and "tsx!", respectively. E.g., **./module.tsx** becomes **tsx!./module**.
 
-Note that Babel does not type-check. See [TypeScript's handbook](https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html) to get started.
+Note that Babel does not type-check.
 
 ## Extras
 
