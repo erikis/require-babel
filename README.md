@@ -50,7 +50,7 @@ Plugin preconfigured for importing JSON files. Other plugins need to be configur
 
 Plugin preconfigured for importing text files. Other plugins need to be configured to map the extension **.txt** to **text!**. The script can be copied and configured for other use cases, e.g. **csv.js** for **.csv** files.
 
-Note that it is best to avoid loading modules or files having the same name, only differing in file extension. Otherwise, there might be mixups in the build.
+Note that it is best to avoid loading modules or files having the same name, only differing in file extension. Otherwise, there might be mix-ups in the build.
 
 ## Use
 
