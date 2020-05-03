@@ -113,7 +113,9 @@ define(['module', 'babel-standalone'], function (module, Babel) {
     }
 
     // Register a Babel plugin for transforming import URLs such as
-    // "./test.js" (suffix ".js") to e.g. "babel!./test" (prefix "babel!")
+    // "./test.js" (suffix/extension ".js") to e.g. "babel!./test" (prefix "babel!")
+    // Also transform relative URLs such as "./test" to e.g. "babel!./test" using the special suffix "."
+    // and transform other URLs such as "test" to e.g. "babel!test" using the special suffix ""
     var suffixToPrefix = {};
     var importVisitors = {
         ImportDeclaration: function (nodePath, state) {
@@ -122,6 +124,10 @@ define(['module', 'babel-standalone'], function (module, Babel) {
             var suffix;
             if (match !== null && suffixToPrefix.hasOwnProperty(suffix = match[1])) {
                 source.value = suffixToPrefix[suffix] + source.value.slice(0, -suffix.length);
+            } else if (source.value.match(/^\.?\.?\/.+/) !== null && suffixToPrefix.hasOwnProperty('.')) {
+                source.value = suffixToPrefix['.'] + source.value;
+            } else if (suffixToPrefix.hasOwnProperty('')) {
+                source.value = suffixToPrefix[''] + source.value;
             }
         }
     };
