@@ -28,6 +28,30 @@ Plugin preconfigured for transforming [ES](https://en.wikipedia.org/wiki/ECMAScr
 
 Plugin preconfigured for transforming ES modules using [JSX](https://en.wikipedia.org/wiki/React_(web_framework)#JSX) syntax and recursively transforming imported modules with URLs ending with .js and .jsx, by prepending "esm!" and "jsx!", respectively. E.g., **./module.jsx** becomes **jsx!./module**.
 
+### tsm.js
+
+Plugin preconfigured for transforming ES modules using [TypeScript](https://en.wikipedia.org/wiki/TypeScript) syntax and recursively transforming imported modules with URLs ending with .ts and .tsx, by prepending "tsm!" and "tsx!", respectively. E.g., **./module.ts** becomes **tsm!./module**.
+
+### tsx.js
+
+Plugin preconfigured for transforming ES modules using TS/JSX syntax and recursively transforming imported modules with URLs ending with .ts and .tsx, by prepending "tsm!" and "tsx!", respectively. E.g., **./module.tsx** becomes **tsx!./module**.
+
+Note that Babel does not type-check. See [TypeScript's handbook](https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html) to get started.
+
+## Extras
+
+These scripts are implemented as AMD loader plugins but do not use Babel.
+
+### json.js
+
+Plugin preconfigured for importing JSON files. Other plugins need to be configured to map the extension **.json** to **json!**. The script can be copied and configured for other use cases, e.g. **jsonld.js** for **.jsonld** files.
+
+### text.js
+
+Plugin preconfigured for importing text files. Other plugins need to be configured to map the extension **.txt** to **text!**. The script can be copied and configured for other use cases, e.g. **csv.js** for **.csv** files.
+
+Note that it is best to avoid loading modules or files having the same name, only differing in file extension. Otherwise, there might be mixups in the build.
+
 ## Use
 
 ```html
@@ -42,20 +66,24 @@ Plugin preconfigured for transforming ES modules using [JSX](https://en.wikipedi
       require.config({
         baseUrl: ".",
         paths: {
-          "esm": "https://cdn.jsdelivr.net/npm/require-babel@0/esm",
-          "jsx": "https://cdn.jsdelivr.net/npm/require-babel@0/jsx",
-          "require-babel": "https://cdn.jsdelivr.net/npm/require-babel@0/babel",
+          "esm": "https://cdn.jsdelivr.net/npm/require-babel@1/esm",
+          "jsx": "https://cdn.jsdelivr.net/npm/require-babel@1/jsx",
+          "require-babel": "https://cdn.jsdelivr.net/npm/require-babel@1/babel",
           "babel-standalone": "https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel",
           "react": "https://cdn.jsdelivr.net/npm/react@16/umd/react.development",
           "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.development"
+        },
+        config: {
+          //"esm": { extension: ".js", extensions: { ".js": "esm!", ".jsx": "jsx!" } }
         }
       });
       require.exec = function(text) {
-        // Do no eval (the default) because it breaks breakpoints
-        var node = require.createNode(require.config);
+        // Do no eval (the default)
+        var node = require.createNode({});
         node.text = text;
         document.head.appendChild(node);
       };
+      //BABEL_ENV_TARGETS = "defaults"; // no need to set; is the default
       BABEL_ENV_TARGETS = { "chrome": "81", "firefox": "75", "safari": "13" };
       require(["esm!./app"]); // transforms and runs app.js
     </script>
@@ -83,6 +111,8 @@ npm install require-babel
 * build.js — [RequireJS](https://github.com/requirejs/requirejs) ([r.js](https://github.com/requirejs/r.js)) build specification, used by `npm run build`
 * webpack.config.js — webpack build specification, used by `npm run webpack`
 * babel.config.json — Babel config for transcompilation, used by `npm test`
+
+The demo app can be used locally by running, e.g, `npx serve -l 8123`.
 
 After installing the production dependencies (`npm install --production`), the demo app can be built using RequireJS and minified: `npm run build && npm run minify`. The build is intended to not affect global state on the page.
 
