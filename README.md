@@ -118,6 +118,8 @@ After installing the production dependencies (`npm install --production`), the d
 
 After installing the development dependencies (`npm install`), the demo app can be tested using `npm test` and built using webpack and minified: `npm run webpack && npm run minify`.
 
+Note that the demo intentionally only makes use of esm.js and jsx.js.
+
 ## License
 
 MIT
