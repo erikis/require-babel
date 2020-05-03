@@ -214,7 +214,7 @@ define(['module', 'babel-standalone'], function (module, Babel) {
                     load.fromText(name, text);
                 } else {
                     if (config.isBuild) {
-                        text = 'define(function() { return ' + JSON.stringify(transformed) + '; );\n';
+                        text = 'define(function() { return ' + JSON.stringify(transformed) + '; });\n';
                         buildMap[name] = text;
                     }
                     load(transformed);
